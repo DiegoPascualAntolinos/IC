@@ -1,5 +1,5 @@
 #include "ACO.h"
-
+#include <omp.h>
 #include <iostream>
 #include <cstdlib>
 #include <stdio.h>

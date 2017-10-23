@@ -1,5 +1,5 @@
 #include <cstdlib>
-
+#include <omp.h>
 #include <cmath>
 #include <limits>
 

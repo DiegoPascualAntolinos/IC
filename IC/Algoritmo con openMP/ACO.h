@@ -1,4 +1,5 @@
 #include "Randoms.cpp"
+#include <omp.h>
 
 class ACO {
 public:

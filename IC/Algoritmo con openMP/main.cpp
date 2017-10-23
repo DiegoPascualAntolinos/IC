@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include <cstdlib>
-
+#include <omp.h>
 #include <cmath>
 #include <limits>
 #include <climits>
@@ -16,7 +16,7 @@
 #define ITERATIONS		(int) 5
 
 #define NUMBEROFANTS	(int) 4
-#define NUMBEROFCITIES	(int) 8
+#define NUMBEROFCITIES	(int) 10
 
 // if (ALPHA == 0) { stochastic search & sub-optimal route }
 #define ALPHA			(double) 0.5
@@ -37,8 +37,16 @@ int main() {
 			 			ALPHA, BETA, Q, RO, TAUMAX,
 			 			INITIALCITY);
 
+        cout<<"Cuantas hormiguitas quieres?"<<endl;
+        int numHormigas;
+        cin>>numHormigas;
+        
+        cout<<"Cuantas ciudades quieres?"<<endl;
+        int numCiudades;
+        cin>>numCiudades;
+        
 	ANTS -> init();
-
+        /*Hazte dos bucles que de forma random generen hormigas, conexiones entre ciudades y posiciones*/
 	ANTS -> connectCITIES (0, 1);
 	ANTS -> connectCITIES (0, 2);
 	ANTS -> connectCITIES (0, 3);
@@ -53,6 +61,15 @@ int main() {
 	ANTS -> connectCITIES (4, 5);
 	ANTS -> connectCITIES (4, 7);
 	ANTS -> connectCITIES (6, 7);
+        ANTS -> connectCITIES (8, 0);
+        ANTS -> connectCITIES (8, 1);
+        ANTS -> connectCITIES (8, 3);
+        ANTS -> connectCITIES (8, 7);
+        ANTS -> connectCITIES (8, 9);
+        ANTS -> connectCITIES (9, 2);
+        ANTS -> connectCITIES (9, 3);
+        ANTS -> connectCITIES (9, 5);
+        ANTS -> connectCITIES (9, 7);
 	/* ANTS -> connectCITIES(8, 2);
 	ANTS -> connectCITIES(8, 6);
 	ANTS -> connectCITIES(8, 7); */
@@ -65,6 +82,8 @@ int main() {
 	ANTS -> setCITYPOSITION (5, 10,  1);
 	ANTS -> setCITYPOSITION (6, 20, 20);
 	ANTS -> setCITYPOSITION (7, 20, 30);
+        ANTS -> setCITYPOSITION (8, 30, 30);
+        ANTS -> setCITYPOSITION (9, 20, 40);
 	// ANTS -> setCITYPOSITION(8, 26, 20);
 
 	ANTS -> printGRAPH ();
